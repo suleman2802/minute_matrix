@@ -1,0 +1,288 @@
+@startuml
+set namespaceSeparator ::
+
+class "minute_matrix::Providers::user_provider.dart::UserProvider" {
+  +UserDetails userDetails
+  +dynamic getUserDetails
+  +dynamic fetchUserDetails()
+  +dynamic getImageUrl()
+  +dynamic username()
+  +dynamic userId()
+  +dynamic uploadImage()
+}
+
+"minute_matrix::Providers::user_provider.dart::UserProvider" o-- "minute_matrix::Providers::user_provider.dart::UserDetails"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "minute_matrix::Providers::user_provider.dart::UserProvider"
+
+class "minute_matrix::Providers::user_provider.dart::UserDetails" {
+  -String _name
+  -String _id
+  -String _email
+  -String _url
+  +String getName()
+  +String getId()
+  +String getEmail()
+  +String getUrl()
+}
+
+class "minute_matrix::Providers::user_auth_provider.dart::UserAuthProvider" {
+  +dynamic login()
+  +dynamic createNewUser()
+  +dynamic logout()
+  +dynamic getUserByEmail()
+  +dynamic sendResetPassword()
+}
+
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "minute_matrix::Providers::user_auth_provider.dart::UserAuthProvider"
+
+class "minute_matrix::firebase_options.dart::DefaultFirebaseOptions" {
+  {static} +FirebaseOptions web
+  {static} +FirebaseOptions android
+  {static} +FirebaseOptions ios
+  {static} +FirebaseOptions macos
+  {static} +FirebaseOptions currentPlatform
+}
+
+"minute_matrix::firebase_options.dart::DefaultFirebaseOptions" o-- "firebase_core_platform_interface::firebase_core_platform_interface.dart::FirebaseOptions"
+
+class "minute_matrix::Screens::profile_screen.dart::ProfileScreeen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::Screens::profile_screen.dart::ProfileScreeen"
+
+class "minute_matrix::Screens::forget_password_screen.dart::ForgetPasswordScreen" {
+  {static} +String routeName
+  +State<ForgetPasswordScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "minute_matrix::Screens::forget_password_screen.dart::ForgetPasswordScreen"
+
+class "minute_matrix::Screens::forget_password_screen.dart::_ForgetPasswordScreenState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "minute_matrix::Screens::forget_password_screen.dart::_ForgetPasswordScreenState"
+
+class "minute_matrix::Screens::home_screen.dart::HomeScreen" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::Screens::home_screen.dart::HomeScreen"
+
+class "minute_matrix::Screens::splash_screen.dart::SplashScreen" {
+  {static} +String routeName
+  +State<SplashScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "minute_matrix::Screens::splash_screen.dart::SplashScreen"
+
+class "minute_matrix::Screens::splash_screen.dart::_SplashScreenState" {
+  +void getNecessaryData()
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "minute_matrix::Screens::splash_screen.dart::_SplashScreenState"
+
+class "minute_matrix::Screens::auth_screen.dart::AuthScreen" {
+  {static} +String routeName
+  +bool isloading
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::Screens::auth_screen.dart::AuthScreen"
+
+class "minute_matrix::main.dart::MyApp" {
+  +dynamic savedThemeMode
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::main.dart::MyApp"
+
+class "minute_matrix::widgets::home::recent_meeting_widget.dart::RecentMeetingWidget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::home::recent_meeting_widget.dart::RecentMeetingWidget"
+
+class "minute_matrix::widgets::home::button_style_widget.dart::ButtonStyleWidget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::home::button_style_widget.dart::ButtonStyleWidget"
+
+class "minute_matrix::widgets::home::minute_consumed_widget.dart::MinuteConsumedWidget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::home::minute_consumed_widget.dart::MinuteConsumedWidget"
+
+class "minute_matrix::widgets::home::chart_widget.dart::ChartWidget" {
+  +double resultValue()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::home::chart_widget.dart::ChartWidget"
+
+class "minute_matrix::widgets::home::record_meeting_widget.dart::RecordMeetingWidget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::home::record_meeting_widget.dart::RecordMeetingWidget"
+
+class "minute_matrix::widgets::home::dropdown_widget.dart::dropdownWidget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::home::dropdown_widget.dart::dropdownWidget"
+
+class "minute_matrix::widgets::drawer::drawer_widget.dart::DrawerWidget" {
+  +State<DrawerWidget> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "minute_matrix::widgets::drawer::drawer_widget.dart::DrawerWidget"
+
+class "minute_matrix::widgets::drawer::drawer_widget.dart::_DrawerWidgetState" {
+  -int _selectedIndex
+  -void _onItemTapped()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "minute_matrix::widgets::drawer::drawer_widget.dart::_DrawerWidgetState"
+
+class "minute_matrix::widgets::single_item.dart::SingleItem" {
+  -dynamic _icon
+  -dynamic _title
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::single_item.dart::SingleItem"
+
+class "minute_matrix::widgets::chat::new_message.dart::NewMessage" {
+  +State<NewMessage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "minute_matrix::widgets::chat::new_message.dart::NewMessage"
+
+class "minute_matrix::widgets::chat::new_message.dart::_NewMessageState" {
+  -String _messageEntered
+  -TextEditingController _controller
+  +void sendMessage()
+  +Widget build()
+}
+
+"minute_matrix::widgets::chat::new_message.dart::_NewMessageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "minute_matrix::widgets::chat::new_message.dart::_NewMessageState"
+
+class "minute_matrix::widgets::chat::message_bubble.dart::MessageBubble" {
+  -dynamic _message
+  -dynamic _isMe
+  +Key key
+  -dynamic _userName
+  +Widget build()
+}
+
+"minute_matrix::widgets::chat::message_bubble.dart::MessageBubble" o-- "flutter::src::foundation::key.dart::Key"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::chat::message_bubble.dart::MessageBubble"
+
+class "minute_matrix::widgets::chat::messages.dart::Messages" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::chat::messages.dart::Messages"
+
+class "minute_matrix::widgets::auth::auth_widget.dart::AuthWidget" {
+  +State<AuthWidget> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "minute_matrix::widgets::auth::auth_widget.dart::AuthWidget"
+
+class "minute_matrix::widgets::auth::auth_widget.dart::_AuthWidgetState" {
+  -GlobalKey<FormState> _formKey
+  -bool _isLogin
+  +bool isloading
+  -String _userEmail
+  -String _userName
+  -String _password
+  +void submitForm()
+  +void trySubmit()
+  +Widget build()
+}
+
+"minute_matrix::widgets::auth::auth_widget.dart::_AuthWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "minute_matrix::widgets::auth::auth_widget.dart::_AuthWidgetState"
+
+class "minute_matrix::widgets::profile::dark_theme_toggle_widget.dart::DarkThemeToggleWidget" {
+  {static} +bool isDarkMode
+  +State<DarkThemeToggleWidget> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "minute_matrix::widgets::profile::dark_theme_toggle_widget.dart::DarkThemeToggleWidget"
+
+class "minute_matrix::widgets::profile::dark_theme_toggle_widget.dart::_DarkThemeToggleWidgetState" {
+  -void _toggleTheme()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "minute_matrix::widgets::profile::dark_theme_toggle_widget.dart::_DarkThemeToggleWidgetState"
+
+class "minute_matrix::widgets::profile::upload_pic.dart::UploadPic" {
+  +State<UploadPic> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "minute_matrix::widgets::profile::upload_pic.dart::UploadPic"
+
+class "minute_matrix::widgets::profile::upload_pic.dart::_ProfilePicState" {
+  -File? _imgFile
+  +void showSnackBar()
+  -dynamic _pickImage()
+  +NetworkImage checkImage()
+  +Widget build()
+}
+
+"minute_matrix::widgets::profile::upload_pic.dart::_ProfilePicState" o-- "dart::io::File"
+"flutter::src::widgets::framework.dart::State" <|-- "minute_matrix::widgets::profile::upload_pic.dart::_ProfilePicState"
+
+class "minute_matrix::widgets::profile::item_heading.dart::ItemHeading" {
+  -dynamic _title
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::profile::item_heading.dart::ItemHeading"
+
+class "minute_matrix::widgets::profile::general_widget.dart::GeneralWidget" {
+  +State<GeneralWidget> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "minute_matrix::widgets::profile::general_widget.dart::GeneralWidget"
+
+class "minute_matrix::widgets::profile::general_widget.dart::_GeneralWidgetState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "minute_matrix::widgets::profile::general_widget.dart::_GeneralWidgetState"
+
+class "minute_matrix::widgets::profile::profile_pic.dart::ProfilePic" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::profile::profile_pic.dart::ProfilePic"
+
+class "minute_matrix::widgets::profile::about_app_widget.dart::AboutAppWidget" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "minute_matrix::widgets::profile::about_app_widget.dart::AboutAppWidget"
+
+class "minute_matrix::widgets::theme::theme_widget.dart::ThemeWidget" {
+  {static} +ThemeData lightTheme
+  {static} +ThemeData darkTheme
+}
+
+"minute_matrix::widgets::theme::theme_widget.dart::ThemeWidget" o-- "flutter::src::material::theme_data.dart::ThemeData"
+
+
+@enduml
